@@ -1,4 +1,6 @@
+import React, { useContext } from 'react'
 import { ExtensionContext } from '@looker/extension-sdk-react'
+import { fromPairs } from 'lodash'
 
 export const getPostgreData = async() => {
     const { coreSDK } = useContext(ExtensionContext)
@@ -11,8 +13,8 @@ export const getPostgreData = async() => {
             model: 'lux_cc_next',
             view: 'event_logs',
             fields: ['event_sessions.count'],
-            filters: {'event_logs.timestamp_date': '2021/07/01 to 2021/07/08', 'event_logs.sequence': '<100', 'event_sessions.session_start_date': '2021/07/01 to 2021/07/08', 'account.account_name': 'a%,b%,c%,d%,e%'},
-        filter_expression: "${event_logs.client_id}=${client.id} AND ${event_sessions.client_id}=${client.id}",
+            filters: { 'event_logs.timestamp_date': '2021/07/01 to 2021/07/08', 'event_logs.sequence': '<100', 'event_sessions.session_start_date': '2021/07/01 to 2021/07/08', 'account.account_name': 'a%,b%,c%,d%,e%' },
+            filter_expression: "${event_logs.client_id}=${client.id} AND ${event_sessions.client_id}=${client.id}",
         },
     }))
 
@@ -20,12 +22,12 @@ export const getPostgreData = async() => {
         result_format: 'json_detail',
         limit: 500,
         body: {
-        total: true,
-        model: 'lux_cc_next',
-        view: 'event_logs',
-        fields: ['event_logs.user_count'],
-        filters: {'event_logs.timestamp_date': '2021/07/01 to 2021/07/08', 'event_logs.sequence': '<100', 'event_sessions.session_start_date': '2021/07/01 to 2021/07/08', 'account.account_name': 'a%,b%,c%,d%,e%'},
-        filter_expression: "${event_logs.client_id}=${client.id} AND ${event_sessions.client_id}=${client.id}",
+            total: true,
+            model: 'lux_cc_next',
+            view: 'event_logs',
+            fields: ['event_logs.user_count'],
+            filters: { 'event_logs.timestamp_date': '2021/07/01 to 2021/07/08', 'event_logs.sequence': '<100', 'event_sessions.session_start_date': '2021/07/01 to 2021/07/08', 'account.account_name': 'a%,b%,c%,d%,e%' },
+            filter_expression: "${event_logs.client_id}=${client.id} AND ${event_sessions.client_id}=${client.id}",
         },
     }))
 
@@ -33,13 +35,13 @@ export const getPostgreData = async() => {
         result_format: 'json_detail',
         limit: 500,
         body: {
-        total: true,
-        model: 'lux_cc_next',
-        view: 'event_logs',
-        fields: ['event_sessions.count', 'account.industry'],
-        filters: {'event_logs.timestamp_date': '2021/07/01 to 2021/07/08', 'event_logs.sequence': '<100', 'event_sessions.session_start_date': '2021/07/01 to 2021/07/08', 'account.account_name': 'a%,b%,c%,d%,e%'},
-        filter_expression: "${event_logs.client_id}=${client.id} AND ${event_sessions.client_id}=${client.id}",
-        sorts: ['event_sessions.count desc'],
+            total: true,
+            model: 'lux_cc_next',
+            view: 'event_logs',
+            fields: ['event_sessions.count', 'account.industry'],
+            filters: { 'event_logs.timestamp_date': '2021/07/01 to 2021/07/08', 'event_logs.sequence': '<100', 'event_sessions.session_start_date': '2021/07/01 to 2021/07/08', 'account.account_name': 'a%,b%,c%,d%,e%' },
+            filter_expression: "${event_logs.client_id}=${client.id} AND ${event_sessions.client_id}=${client.id}",
+            sorts: ['event_sessions.count desc'],
         }
     }))
 
@@ -47,13 +49,13 @@ export const getPostgreData = async() => {
         result_format: 'json_detail',
         limit: 500,
         body: {
-        total: true,
-        model: 'lux_cc_next',
-        view: 'event_logs',
-        fields: ['event_sessions.count', 'account.account_name'],
-        filters: {'event_logs.timestamp_date': '2021/07/01 to 2021/07/08', 'event_logs.sequence': '<100', 'event_sessions.session_start_date': '2021/07/01 to 2021/07/08', 'account.account_name': 'a%,b%,c%,d%,e%'},
-        filter_expression: "${event_logs.client_id}=${client.id} AND ${event_sessions.client_id}=${client.id}",
-        sorts: ['event_sessions.count desc'],
+            total: true,
+            model: 'lux_cc_next',
+            view: 'event_logs',
+            fields: ['event_sessions.count', 'account.account_name'],
+            filters: { 'event_logs.timestamp_date': '2021/07/01 to 2021/07/08', 'event_logs.sequence': '<100', 'event_sessions.session_start_date': '2021/07/01 to 2021/07/08', 'account.account_name': 'a%,b%,c%,d%,e%' },
+            filter_expression: "${event_logs.client_id}=${client.id} AND ${event_sessions.client_id}=${client.id}",
+            sorts: ['event_sessions.count desc'],
         }
     }))
 
@@ -64,8 +66,8 @@ export const getPostgreData = async() => {
     let postgreIndustriesLength = postgreTransactionsByIndustryResult.data.length
     for (let i = 0; i < postgreIndustriesLength; i++) {
         postgreTransactionsByIndustry[i] = {
-        "account.industry" : postgreTransactionsByIndustryResult.data[i]["account.industry"].value,
-        "event_sessions.count" : postgreTransactionsByIndustryResult.data[i]["event_sessions.count"].value
+            "account.industry": postgreTransactionsByIndustryResult.data[i]["account.industry"].value,
+            "event_sessions.count": postgreTransactionsByIndustryResult.data[i]["event_sessions.count"].value
         }
     }
 
