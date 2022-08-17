@@ -45,8 +45,15 @@ module.exports = {
               'style-loader',
               'css-loader'
             ]
-          }
-        ],
+        },
+        {
+            test: /\.(jpe?g|png|gif|svg)$/i, 
+            loader: 'file-loader',
+            options: {
+              name: '/src/components/PhoneComponent/assets/[name].[ext]'
+        }
+        }],
+        
     },
     resolve: {
         extensions: ['.jsx', '.js'],

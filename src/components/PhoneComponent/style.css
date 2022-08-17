@@ -15,7 +15,6 @@
 
 
 .iphoneTime{
-    /* height: 29px; */
     font-size: 12px;
     text-align: left;
     margin-left: 10px;
@@ -24,12 +23,13 @@
 .navBar{
     background-color: #FFFFFF;
     margin-top: 6px;
+    margin-left: 16px;
 }
 
 .mainContent{
-    height: 698px;
+    height: 714px;
     margin:10px;
-    
+    margin-left: 16px;
 }
 .firstGraph{
     margin-top: 10px;
@@ -39,6 +39,11 @@
 
 .bottomBar{
     background-color: #F2F2F2;
+    padding-left: 72px
+}
+
+.iphoneLine{
+    margin-left: 40%;
 }
 
 .iphoneBottomBar{

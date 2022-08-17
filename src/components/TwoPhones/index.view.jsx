@@ -1,8 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import PhoneComponent from '../PhoneComponent'
 import Button from '@mui/material/Button';
 import { firstReturn, secondReturn } from './index.data';
 import Grid from '@mui/material/Grid';
+
+import { ExtensionContext } from '@looker/extension-sdk-react'
+
 
 const TwoPhones = () => {
 
@@ -14,15 +17,19 @@ const TwoPhones = () => {
 
   const [messageAlloy, setMessageAlloy] = useState()
   const [messagePostgre, setMessagePostgre] = useState()
-  const [loadingAlloy, setLoadingAlloy] = useState(false)
-  const [loadingPostgre, setLoadingPostgre] = useState(false)
+  const [loadingAlloy, setLoadingAlloy] = useState(true)
+  const [loadingPostgre, setLoadingPostgre] = useState(true)
   const [dataAlloy, setDataAlloy] = useState()
   const [dataPostgre, setDataPostgre] = useState()
+
+  const [startPressed, setStartPressed] = useState(false)
   const { coreSDK } = useContext(ExtensionContext)
 
 
   const loadPostgreData = async () => {
+    
     try {
+      setStartPressed(true)
       setLoadingPostgre(true)
       setDataPostgre(undefined)
       setMessagePostgre("loading postgre data")
@@ -30,7 +37,7 @@ const TwoPhones = () => {
    
       const postgreTotalTranscationsResult = await coreSDK.ok(coreSDK.run_inline_query({
         result_format: 'json_detail',
-        limit: 10,
+        limit: 500,
         body: {
             total: true,
             model: 'lux_cc_next',
@@ -82,7 +89,7 @@ const TwoPhones = () => {
           }
       }))
       
-      setDataPostgre(postgreTotalTranscationsResult)
+      // setDataPostgre(postgreTotalTranscationsResult)
 
       let postgreTotalTranscations = postgreTotalTranscationsResult.data[0]["event_sessions.count"].value
       let postgreNumberOfClients = postgreNumberOfClientsResult.data[0]["event_logs.user_count"].value
@@ -103,7 +110,8 @@ const TwoPhones = () => {
         "transactionsByIndustry" : postgreTransactionsByIndustry,
         "topAcounts" : postgreTopAccounts 
       }
-      // setDataPostgre(postgreData)
+      setDataPostgre(postgreData)
+      console.log("Postgress DB")
       console.log(postgreData)
 
 
@@ -131,13 +139,14 @@ const TwoPhones = () => {
 
   const loadAlloyData = async () => {
     try {
+      setStartPressed(true);
       setLoadingAlloy(true)
       setDataAlloy(undefined)
       setMessageAlloy("loading alloy data")
 
       const alloyTotalTranscationsResult = await coreSDK.ok(coreSDK.run_inline_query({
         result_format: 'json_detail',
-        limit: 10,
+        limit: 500,
         body: {
             total: true,
             model: 'lux_next',
@@ -189,7 +198,7 @@ const TwoPhones = () => {
           }
       }))
 
-      setDataAlloy(alloyTotalTranscationsResult)
+      // setDataAlloy(alloyTotalTranscationsResult)
 
       let alloyTotalTranscations = alloyTotalTranscationsResult.data[0]["event_sessions.count"].value
       let alloyNumberOfClients = alloyNumberOfClientsResult.data[0]["event_logs.user_count"].value
@@ -212,7 +221,8 @@ const TwoPhones = () => {
         "topAcounts" : alloyTopAccounts 
       }
 
-      // setDataAlloy(alloyData)
+      setDataAlloy(alloyData)
+      console.log("Allow DB")
       console.log(alloyData)
 
 
@@ -257,10 +267,10 @@ const TwoPhones = () => {
         alignItems="center"
         spacing={30}>
             <Grid item>
-            {!loadingAlloy && <PhoneComponent data = {dataPostgre}/>}
+            {<PhoneComponent data = {dataAlloy} loadingComplete = {loadingAlloy} startPressed = {startPressed}/>}
             </Grid>
             <Grid item>
-            {!loadingPostgre && <PhoneComponent data = {dataAlloy}/>}
+            {<PhoneComponent data = {dataPostgre} loadingComplete = {loadingPostgre} startPressed = {startPressed}/>}
             </Grid>
         </Grid>
     </div>
