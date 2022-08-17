@@ -1,23 +1,17 @@
-import React, { useEffect, useState, useContext, Fragment } from 'react'
-import { 
-  Space, 
-  ComponentsProvider, 
-  Span,
-  Button,
-  DataTable,
-  DataTableItem,
-  DataTableCell,
-  Spinner, 
-  mergeClassNames
-} from '@looker/components'
+import React, { useState } from 'react'
+import PhoneComponent from '../PhoneComponent'
+import Button from '@mui/material/Button';
+import { firstReturn, secondReturn } from './index.data';
+import Grid from '@mui/material/Grid';
 
-import TwoPhones from './TwoPhones'
+const TwoPhones = () => {
 
-import { ExtensionContext } from '@looker/extension-sdk-react'
+  const [receiveddata,setReceivedData] = useState({});
+  const [dataAvailable, setDataAvailable] = useState(false);
 
+  const [receiveddata2,setReceivedData2] = useState({});
+  const [dataAvailable2, setDataAvailable2] = useState(false);
 
-export const Alloy = () => {
-  
   const [messageAlloy, setMessageAlloy] = useState()
   const [messagePostgre, setMessagePostgre] = useState()
   const [loadingAlloy, setLoadingAlloy] = useState(false)
@@ -25,7 +19,7 @@ export const Alloy = () => {
   const [dataAlloy, setDataAlloy] = useState()
   const [dataPostgre, setDataPostgre] = useState()
   const { coreSDK } = useContext(ExtensionContext)
-  
+
 
   const loadPostgreData = async () => {
     try {
@@ -87,7 +81,8 @@ export const Alloy = () => {
           sorts: ['event_sessions.count desc'],
           }
       }))
-
+      
+      setDataPostgre(postgreTotalTranscationsResult)
 
       let postgreTotalTranscations = postgreTotalTranscationsResult.data[0]["event_sessions.count"].value
       let postgreNumberOfClients = postgreNumberOfClientsResult.data[0]["event_logs.user_count"].value
@@ -108,7 +103,7 @@ export const Alloy = () => {
         "transactionsByIndustry" : postgreTransactionsByIndustry,
         "topAcounts" : postgreTopAccounts 
       }
-      setDataPostgre(postgreData)
+      // setDataPostgre(postgreData)
       console.log(postgreData)
 
 
@@ -194,6 +189,8 @@ export const Alloy = () => {
           }
       }))
 
+      setDataAlloy(alloyTotalTranscationsResult)
+
       let alloyTotalTranscations = alloyTotalTranscationsResult.data[0]["event_sessions.count"].value
       let alloyNumberOfClients = alloyNumberOfClientsResult.data[0]["event_logs.user_count"].value
       let alloyTransactionsByIndustry = []
@@ -215,7 +212,7 @@ export const Alloy = () => {
         "topAcounts" : alloyTopAccounts 
       }
 
-      setDataAlloy(alloyData)
+      // setDataAlloy(alloyData)
       console.log(alloyData)
 
 
@@ -241,12 +238,33 @@ export const Alloy = () => {
     }
   }
 
-  
+  const getStarted = () =>{
+    setReceivedData(firstReturn());
+    console.log(firstReturn());
+    setDataAvailable(true);
+
+    setReceivedData2(secondReturn());
+    console.log(firstReturn());
+    setDataAvailable2(true);
+  }
   return (
-    <>
-      <ComponentsProvider>
-        <TwoPhones/>
-      </ComponentsProvider>
-    </>
+    <div>
+        <Button variant="contained"  onClick={() => {loadAlloyData(), loadPostgreData()}}>Start</Button>
+        <Grid 
+        container
+        direction="row"
+        justifyContent="center"
+        alignItems="center"
+        spacing={30}>
+            <Grid item>
+            {!loadingAlloy && <PhoneComponent data = {dataPostgre}/>}
+            </Grid>
+            <Grid item>
+            {!loadingPostgre && <PhoneComponent data = {dataAlloy}/>}
+            </Grid>
+        </Grid>
+    </div>
   )
 }
+
+export default TwoPhones
