@@ -38,7 +38,15 @@ module.exports = {
             exclude: /node_modules/,
             include: /src/,
             sideEffects: false,
-        }, ],
+        }, 
+        {
+            test: /\.css$/,
+            use: [
+              'style-loader',
+              'css-loader'
+            ]
+          }
+        ],
     },
     resolve: {
         extensions: ['.jsx', '.js'],

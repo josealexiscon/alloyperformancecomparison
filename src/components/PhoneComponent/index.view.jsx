@@ -11,18 +11,18 @@ import {forIndustryBar, forAccountsBar} from './index.data';
 import Chart from "react-apexcharts";
 
 import "./style.css"
-import navBar from "./assets/navBar.png"
-import name from "./assets/name.png"
-import network from "./assets/network.png"
-import profile from "./assets/profile.png"
-import wifi from "./assets/wifi.png"
-import Battery from "./assets/Battery.png"
-import circle from "./assets/circle.png"
-import hometext from "./assets/hometext.png"
-import investtext from "./assets/investtext.png"
-import you from "./assets/you.png"
-import youtext from "./assets/youtext.png"
-import iphoneLine from "./assets/line.png"
+// import navBar from "./assets/navBar.png"
+// import name from "./assets/name.png"
+// import network from "./assets/network.png"
+// import profile from "./assets/profile.png"
+// import wifi from "./assets/wifi.png"
+// import Battery from "./assets/Battery.png"
+// import circle from "./assets/circle.png"
+// import hometext from "./assets/hometext.png"
+// import investtext from "./assets/investtext.png"
+// import you from "./assets/you.png"
+// import youtext from "./assets/youtext.png"
+// import iphoneLine from "./assets/line.png"
 
 
 
@@ -51,13 +51,13 @@ function PhoneComponent(props) {
                 <Grid item xs={3}>
                     <Grid container spacing={1}>
                         <Grid item xs={4}>
-                            <img src={wifi} alt="wifi" />
+                            {/* <img src={wifi} alt="wifi" /> */}
                         </Grid>
                         <Grid item xs={4}>
-                            <img src={network} alt="network" />
+                            {/* <img src={network} alt="network" /> */}
                         </Grid>
                         <Grid item xs={4}>
-                            <img src={Battery} alt="navBar" />
+                            {/* <img src={Battery} alt="navBar" /> */}
                         </Grid>
                     </Grid>
                 </Grid>
@@ -66,13 +66,13 @@ function PhoneComponent(props) {
         <div className="navBar">
             <Grid container spacing={2}>
                 <Grid item xs={2}>
-                    <img src={navBar} className = "navBarIcon" alt="navBar" />
+                    {/* <img src={navBar} className = "navBarIcon" alt="navBar" /> */}
                 </Grid>
                 <Grid item xs={8}>
-                    <img src={name} alt="name" />
+                    {/* <img src={name} alt="name" /> */}
                 </Grid>
                 <Grid item xs={2}>
-                    <img src={profile} alt="profile" />
+                    {/* <img src={profile} alt="profile" /> */}
                 </Grid>
             </Grid>
         </div>
@@ -128,21 +128,21 @@ function PhoneComponent(props) {
         <div className="bottomBar">
             <Grid container spacing={1}>
                 <Grid item xs={4}>
-                    <img src={circle} alt="home" /> <br/>
-                    <img src={hometext} alt="hometext" />
+                    {/* <img src={circle} alt="home" /> <br/> */}
+                    {/* <img src={hometext} alt="hometext" /> */}
                 </Grid>
                 <Grid item xs={4}>
-                    <img src={network} alt="network" /><br/>
-                    <img src={investtext} alt="investtext" />
+                    {/* <img src={network} alt="network" /><br/> */}
+                    {/* <img src={investtext} alt="investtext" /> */}
                 </Grid>
                 <Grid item xs={4}>
-                    <img src={you} alt="you" /><br/>
-                    <img src={youtext} alt="youtext" />
+                    {/* <img src={you} alt="you" /><br/> */}
+                    {/* <img src={youtext} alt="youtext" /> */}
                 </Grid>
             </Grid>
         </div>
         <div className="iphoneBottomBar">
-            <img src={iphoneLine} alt="iphoneLine" />
+            {/* <img src={iphoneLine} alt="iphoneLine" /> */}
         </div>
     </div>
   );
