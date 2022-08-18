@@ -286,7 +286,7 @@ const TwoPhones = () => {
             {<PhoneComponent data = {dataAlloy} loadingComplete = {loadingAlloy} startPressed = {startPressed}/>}
             </Grid>
             <Grid item>
-            <Typography variant="h5">
+            <Typography variant="h5" align="center">
                   Postgress              
             </Typography>
             {<PhoneComponent data = {dataPostgre} loadingComplete = {loadingPostgre} startPressed = {startPressed}/>}
