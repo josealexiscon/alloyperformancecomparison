@@ -260,13 +260,25 @@ const TwoPhones = () => {
   }
   return (
     <div>
-        <Button variant="contained"  onClick={() => {loadAlloyData(), loadPostgreData()}}>Start</Button>
+      <Grid 
+        container
+        direction="row"
+        justifyContent="center"
+        alignItems="center"
+        spacing={30}>
+
+        <Grid item>
+          <Button variant="contained"  onClick={() => {loadAlloyData(), loadPostgreData()}}>Start</Button>
+
+        </Grid>
+      </Grid>
         <Grid 
         container
         direction="row"
         justifyContent="center"
         alignItems="center"
         spacing={30}>
+          
             <Grid item>
             <Typography variant="h5" align="center">
                   AlloyDB              

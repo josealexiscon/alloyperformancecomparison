@@ -15,6 +15,10 @@
     position: relative;
 }
 
+.loadingBar{
+    margin-top: 70%;
+    margin-left: 30%;
+}
 
 .iphoneTime{
     font-size: 12px;

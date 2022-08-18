@@ -82,11 +82,10 @@ function PhoneComponent(props) {
         
         
         <div className="mainContent">
-
         {
             props.startPressed && props.loadingComplete &&
             <div className="loadingBar">
-            <CircularProgress />
+            <CircularProgress size="10rem" />
             </div>
         }
         {props.startPressed && !props.loadingComplete && 
