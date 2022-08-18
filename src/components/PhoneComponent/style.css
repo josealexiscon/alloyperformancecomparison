@@ -11,6 +11,8 @@
     border-top-right-radius: 20px;
     border-top-left-radius: 20px;
     margin-top: 20px;
+
+    position: relative;
 }
 
 
@@ -27,7 +29,7 @@
 }
 
 .mainContent{
-    height: 714px;
+    /* height: 714px; */
     margin:10px;
     margin-left: 16px;
 }
@@ -39,18 +41,33 @@
 
 .bottomBar{
     background-color: #F2F2F2;
-    padding-left: 72px
+    position: absolute;
+    bottom: 0px;
+    width: 388px;
+
+
+
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.bottomIcons{
+    padding-left: 77px;
+    padding-top: 20px;
 }
 
 .iphoneLine{
     margin-left: 40%;
+    padding-top: 10px;
 }
 
 .iphoneBottomBar{
     background-color: #F2F2F2;
     height: 28px;
 
+
+
+
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
-
 }

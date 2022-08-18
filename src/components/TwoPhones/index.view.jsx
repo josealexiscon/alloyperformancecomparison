@@ -5,6 +5,7 @@ import { firstReturn, secondReturn } from './index.data';
 import Grid from '@mui/material/Grid';
 
 import { ExtensionContext } from '@looker/extension-sdk-react'
+import Typography from '@mui/material/Typography';
 
 
 const TwoPhones = () => {
@@ -267,9 +268,15 @@ const TwoPhones = () => {
         alignItems="center"
         spacing={30}>
             <Grid item>
+            <Typography variant="h5" align="center">
+                  AlloyDB              
+            </Typography>
             {<PhoneComponent data = {dataAlloy} loadingComplete = {loadingAlloy} startPressed = {startPressed}/>}
             </Grid>
             <Grid item>
+            <Typography variant="h5">
+                  Postgress              
+            </Typography>
             {<PhoneComponent data = {dataPostgre} loadingComplete = {loadingPostgre} startPressed = {startPressed}/>}
             </Grid>
         </Grid>
