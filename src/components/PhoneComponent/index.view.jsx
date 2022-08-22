@@ -24,6 +24,7 @@ import iphoneLine from "./assets/line.png"
 
 import IPhoneTime from '../IPhoneTime';
 import NavBar from '../NavBar';
+import MainInformation from '../MainInformation';
 
 
 
@@ -50,63 +51,22 @@ function PhoneComponent(props) {
         
         
         <div className="mainContent">
-        {
-            props.startPressed && props.loadingComplete &&
-            <div className="loadingBar">
-            <CircularProgress size="10rem" />
-            </div>
-        }
-        {props.startPressed && !props.loadingComplete && data
-            &&
-        
-            <div className="loadingComplete">
-            <Grid container spacing={2}>
-                <Grid item xs={6}>
-                    <Card>
-                        <CardContent>
-                            <Typography variant="h5">
-                                {totalTransactions}
-                            </Typography>
-                            <Typography variant="body2">
-                                Total Transactions
-                            </Typography>
-                        </CardContent>
-                        
-                    </Card>
-                </Grid>
-                <Grid item xs={6}>
-                    <Card>
-                        <CardContent>
-                            <Typography variant="h5">
-                                {numberOfClients}
-                            </Typography>
-                            <Typography variant="body2">
-                                Total Clients
-                            </Typography>
-                        </CardContent>
-                        
-                    </Card>
-                </Grid>
-            </Grid>
-            <Card className = "firstGraph">
-                <CardContent>
-                    <Chart
-                        options={graph1.options}
-                        series={graph1.series}
-                        type="bar"
-                        />
-                    </CardContent>        
-            </Card>
-            <Card className="secondGraph">
-                <CardContent>
-                    <Chart
-                        options={graph2.options}
-                        series={graph2.series}
-                        type="bar"
-                        />
-                    </CardContent>        
-            </Card>
-            </div>
+            {props.startPressed && props.loadingComplete &&
+                <div className="loadingBar">
+                    <CircularProgress size="10rem" />
+                </div>
+            }
+            {props.startPressed && 
+                !props.loadingComplete && 
+                data &&
+                <MainInformation totalTransactions = {totalTransactions} numberOfClients = {numberOfClients} graph1={graph1} graph2 = {graph2}/>
+            }
+            {props.startPressed && 
+                !props.loadingComplete && 
+                !data &&
+                <div>
+                    Error occured. Please try again.
+                </div>
             }
         </div>
         
