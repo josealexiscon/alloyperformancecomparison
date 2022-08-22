@@ -7,17 +7,13 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import CircularProgress from '@mui/material/CircularProgress';
 
+
 import {forIndustryBar, forAccountsBar} from './index.data';
 
 import Chart from "react-apexcharts";
 
 import "./style.css"
-import navBar from "./assets/navBar.png"
-import name from "./assets/name.png"
 import network from "./assets/network.png"
-import profile from "./assets/profile.png"
-import wifi from "./assets/wifi.png"
-import Battery from "./assets/Battery.png"
 import circle from "./assets/circle.png"
 import hometext from "./assets/hometext.png"
 import investtext from "./assets/investtext.png"
@@ -26,59 +22,31 @@ import youtext from "./assets/youtext.png"
 import iphoneLine from "./assets/line.png"
 
 
+import IPhoneTime from '../IPhoneTime';
+import NavBar from '../NavBar';
+
+
 
 function PhoneComponent(props) {
     
    
 
     var data = !props.loadingComplete? props.data: null;
-    var totalTransactions = !props.loadingComplete? data.totalTranscations : null;
-    var numberOfClients = !props.loadingComplete?data.numberOfClients: null;
-    var transactionsByIndustry = !props.loadingComplete?data.transactionsByIndustry: null;
-    var topAccounts = !props.loadingComplete?data.topAcounts: null;
+    var totalTransactions = data? data.totalTranscations : null;
+    var numberOfClients = data?data.numberOfClients: null;
+    var transactionsByIndustry = data?data.transactionsByIndustry: null;
+    var topAccounts = data?data.topAcounts: null;
 
-    var graph1 = !props.loadingComplete?forIndustryBar(transactionsByIndustry) : null;
-    var graph2 = !props.loadingComplete?forAccountsBar(topAccounts) : null;
+    var graph1 = data?forIndustryBar(transactionsByIndustry) : null;
+    var graph2 = data?forAccountsBar(topAccounts) : null;
 
     
   return (
 
     <div className="phone">
-        <div className="iphoneTime">
-            <Grid container spacing={2}>
-                <Grid item xs={9}>
-                <div className="time">7:00 PM</div>
-                </Grid>
-                <Grid item xs={3}>
-                    <Grid container spacing={1}>
-                        <Grid item xs={4}>
-                            <img src={wifi} alt="wifi" />
-                        </Grid>
-                        <Grid item xs={4}>
-                            <img src={network} alt="network" />
-                        </Grid>
-                        <Grid item xs={4}>
-                            <img src={Battery} alt="navBar" />
-                        </Grid>
-                    </Grid>
-                </Grid>
-            </Grid>
-        </div>
-        <div className="navBar">
-            <Grid container spacing={2}>
-                <Grid item xs={2}>
-                    <img src={navBar} className = "navBarIcon" alt="navBar" />
-                </Grid>
-                <Grid item xs={8}>
-                    <img src={name} alt="name" />
-                </Grid>
-                <Grid item xs={2}>
-                    <img src={profile} alt="profile" />
-                </Grid>
-            </Grid>
-        </div>
+        <IPhoneTime/>
+        <NavBar/>
 
-        
         
         
         <div className="mainContent">
@@ -88,8 +56,8 @@ function PhoneComponent(props) {
             <CircularProgress size="10rem" />
             </div>
         }
-        {props.startPressed && !props.loadingComplete && 
-       
+        {props.startPressed && !props.loadingComplete && data
+            &&
         
             <div className="loadingComplete">
             <Grid container spacing={2}>
