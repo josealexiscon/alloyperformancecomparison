@@ -287,7 +287,7 @@ const TwoPhones = () => {
             </Grid>
             <Grid item>
             <Typography variant="h5" align="center">
-                  PostgresSQL              
+                  PostgreSQL              
             </Typography>
             {<PhoneComponent data = {dataPostgre} loadingComplete = {loadingPostgre} startPressed = {startPressed}/>}
             </Grid>
