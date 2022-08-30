@@ -44,9 +44,6 @@ function PhoneComponent(props) {
 
     var topAccounts = data?topAccountsValues(topAccountsList):null;
 
-
-    console.log("It is here");
-    console.log(topMovers);
   return (
 
     <div className="phone">

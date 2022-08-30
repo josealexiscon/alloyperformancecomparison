@@ -51,7 +51,14 @@ module.exports = {
             loader: 'file-loader',
             options: {
               name: '/src/components/PhoneComponent/assets/[name].[ext]'
-        }
+            },
+        },
+        {
+            test: /\.(jpe?g|png|gif|svg)$/i, 
+            loader: 'file-loader',
+            options: {
+              name: '/src/components/MainInformation/assets/[name].[ext]'
+            },
         }],
         
     },

@@ -1,7 +1,5 @@
 import React from 'react'
 import Grid from '@mui/material/Grid';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import ReactApexChart from "react-apexcharts";
 import "./style.css";
@@ -10,8 +8,8 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 import { totalFormatter, baFormatter, stockChartData } from './index.data';
 
-import downArrow from './assets/down.png'
-import upArrow from './assets/up.png'
+import downArrow from '../PhoneComponent/assets/downArrow.png'
+import upArrow from '../PhoneComponent/assets/upArrow.png'
 
 
 const MainInformation = (props) => {

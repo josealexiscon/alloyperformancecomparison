@@ -11,6 +11,10 @@
     text-align: left;
 }
 
+.topNumbers{
+    margin-top: 16px;
+}
+
 .baPercent, .moveUpPercent, .moveDownPercent{
     background-color: rgb(232, 243, 235);
     border-radius: 5px;
@@ -28,6 +32,10 @@
 .moveDownPercent{
     color:#A50E0E;
     background-color: rgb(252,232,230)
+}
+
+.stockChart{
+    margin-top: 8px;
 }
 
 .movePercent{
@@ -56,7 +64,8 @@
     text-align: left;
 }
 .topMovers{
-    margin-top: -32px;
+    margin-top: -16px;
+    margin-bottom: 16px;
 }
 .topMoversTitle{
     text-align: left;
@@ -79,6 +88,8 @@
 .scrollmenu {
     overflow: auto;
     white-space: nowrap;
+    height: 128px;
+    margin-top: 16px;
   }
   
 .scrollmenu .eachCard {
@@ -86,6 +97,12 @@
     text-align: center;
     padding: 14px;
     text-decoration: none;
+}
+.eachCard{
+    border:1px solid gray;
+    margin-right: 10px;
+    border-radius: 10px;
+    height: 64px;
 }
 
 .nameOfIndustry{
@@ -96,10 +113,4 @@
 }
 .eachIndustryDetail{
     margin-left: 20px;
-}
-.eachCard{
-    border:1px solid gray;
-    margin-right: 10px;
-    border-radius: 10px;
-    height: 30px;
 }
