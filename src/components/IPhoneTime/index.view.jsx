@@ -6,11 +6,12 @@ import "./style.css"
 import wifi from "./assets/wifi.png"
 import Battery from "./assets/Battery.png"
 import network from "./assets/network.png"
-
+import systemBar from "../PhoneComponent/assets/systemBar.png"
 
 const IPhoneTime = () => {
   return (
     <div className="iphoneTime">
+        {/* <img src={systemBar} alt="systemBar" /> */}
         <Grid container spacing={2}>
             <Grid item xs={9}>
             <div className="time">7:00 PM</div>

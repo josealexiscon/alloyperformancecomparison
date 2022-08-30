@@ -20,6 +20,7 @@ import investtext from "./assets/investtext.png"
 import you from "./assets/you.png"
 import youtext from "./assets/youtext.png"
 import iphoneLine from "./assets/line.png"
+import bottomBar from "./assets/bottomBarPicture.png"
 
 
 import IPhoneTime from '../IPhoneTime';
@@ -74,22 +75,8 @@ function PhoneComponent(props) {
         
             
         <div className="bottomBar">
-            <div className="bottomIcons">
-                <Grid container spacing={1}>
-                    <Grid item xs={4}>
-                        <img src={circle} alt="home" /> <br/>
-                        <img src={hometext} alt="hometext" />
-                    </Grid>
-                    <Grid item xs={4}>
-                        <img src={network} alt="network" /><br/>
-                        <img src={investtext} alt="investtext" />
-                    </Grid>
-                    <Grid item xs={4}>
-                        <img src={you} alt="you" /><br/>
-                        <img src={youtext} alt="youtext" />
-                    </Grid>
-                </Grid>
-            </div>
+            <div className="imageContainer"><img src={bottomBar} alt="bottomBar" className="bottomBarImage"/></div>
+                
             <div className="iphoneBottomBar">
                 <img src={iphoneLine} className="iphoneLine" alt="iphoneLine" />
             </div>

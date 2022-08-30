@@ -37,10 +37,15 @@
     border-bottom-right-radius: 20px;
 }
 
-.bottomIcons{
-    padding-left: 77px;
-    padding-top: 20px;
+.bottomBarImage{
+    width: 345px;
+    height: 68px;
 }
+.imageContainer{
+    width: 354px;
+    margin:0 auto;
+}
+
 
 .iphoneLine{
     margin-left: 40%;
