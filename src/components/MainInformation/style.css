@@ -6,3 +6,100 @@
 .loadingComplete{
     text-align: center;
 }
+
+.myPortfolioText{
+    text-align: left;
+}
+
+.baPercent, .moveUpPercent, .moveDownPercent{
+    background-color: rgb(232, 243, 235);
+    border-radius: 5px;
+    margin: 0 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: #137333;
+}
+
+.moveUpPercent,.moveDownPercent{
+    margin-top:-5px;
+    margin-bottom: 10px;
+}
+
+.moveDownPercent{
+    color:#A50E0E;
+    background-color: rgb(252,232,230)
+}
+
+.movePercent{
+    margin-bottom: 5px;
+}
+
+.numberOfUsers, .today{
+    color: #137333;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: left;
+}
+.eachItemValue{
+    text-align: right;
+}
+.today{
+    margin-left: 10px;
+}
+
+.asOfDate{
+    text-align: left;
+    font-size: small;
+}
+
+.eachItemAccount{
+    text-align: left;
+}
+.topMovers{
+    margin-top: -32px;
+}
+.topMoversTitle{
+    text-align: left;
+    margin: 12px 0;
+    font-size: large;
+}
+
+.portfolioBreakdown{
+    margin: 2px 0;
+    text-align: left;
+    font-size: large;
+}
+
+
+.smallIcon{
+    border-radius: 2px;
+    margin-right: 4px;
+}
+
+.scrollmenu {
+    overflow: auto;
+    white-space: nowrap;
+  }
+  
+.scrollmenu .eachCard {
+    display: inline-block;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+}
+
+.nameOfIndustry{
+    font-size: medium;
+}
+.percentageValue{
+    font-size: small;
+}
+.eachIndustryDetail{
+    margin-left: 20px;
+}
+.eachCard{
+    border:1px solid gray;
+    margin-right: 10px;
+    border-radius: 10px;
+    height: 30px;
+}

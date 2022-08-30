@@ -1,62 +1,50 @@
-const forIndustryBar = (transactionByIndustry)=>{
-    var listOfCategores = [];
-    var listOfValues = [];
+const topIndustriesValues = (transactionByIndustry) =>{
+
+    var listToReturn = [];
+    const colorValues = ['3F77D9','F6BA16','2CC3DF','FA7E1F'];
+    var total = 0;
     for(var i=0;i<transactionByIndustry.length;i++){
-        listOfCategores[i] = transactionByIndustry[i]['account.industry'];
-        listOfValues[i] = transactionByIndustry[i]['event_sessions.count'];
+        total = total + transactionByIndustry[i]['event_sessions.count'];
     }
-    const optionsAndSeries = {
-        options: {
-            chart: {
-                type: 'bar',
-                height: 350
-                },
-            xaxis: {
-                categories: listOfCategores
-            },
-            plotOptions: {
-                bar: {
-                    borderRadius: 4,
-                    horizontal: true,
-                }
+    for(var i=0;i<transactionByIndustry.length;i++){
+        listToReturn.push(
+            {
+                'account':transactionByIndustry[i]['account.industry'],
+                'value': (transactionByIndustry[i]['event_sessions.count']/total) * 100,
+                'colorValue' : colorValues[i%colorValues.length]
             }
-        },
-        series: [{
-            data: listOfValues
-        }]
-      }
-      return optionsAndSeries;
+        )
+    }
+
+    console.log("The list is")
+    console.log(listToReturn)
+    return listToReturn;
 }
 
-const forAccountsBar = (topAccounts)=>{
-    var listOfCategores = [];
-    var listOfValues = [];
+const topAccountsValues = (topAccounts) =>{
+    var total = 0;
     for(var i=0;i<topAccounts.length;i++){
-        listOfCategores[i] = topAccounts[i]["account.account_name"].value;
-        listOfValues[i] = topAccounts[i]["event_sessions.count"].value;
+        total = total + topAccounts[i]["event_sessions.count"].value;
     }
-    const optionsAndSeries = {
-        options: {
-            chart: {
-                type: 'bar',
-                height: 350
-                },
-            xaxis: {
-                categories: listOfCategores
-            },
-            plotOptions: {
-                bar: {
-                    borderRadius: 4,
-                    horizontal: true,
-                }
+    var listToReturn = [];
+    const colorValues = ['#3F77D9','#F6BA16','#2CC3DF','#FA7E1F'];
+    for(var i=0;i<topAccounts.length;i++){
+        listToReturn.push(
+            {
+                'account':topAccounts[i]["account.account_name"].value,
+                'value':topAccounts[i]["event_sessions.count"].value,
+                'percentage': (topAccounts[i]["event_sessions.count"].value/total) * 100,
+                'colorValue' : colorValues[i%colorValues.length]
             }
-        },
-        series: [{
-            data: listOfValues
-        }]
-      }
-      return optionsAndSeries;
+        )
+    }
+    return listToReturn;
 }
 
-export {forIndustryBar}
-export {forAccountsBar}
+
+
+
+
+
+
+export {topIndustriesValues, topAccountsValues}

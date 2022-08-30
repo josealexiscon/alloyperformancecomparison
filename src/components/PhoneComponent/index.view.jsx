@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import CircularProgress from '@mui/material/CircularProgress';
 
 
-import {forIndustryBar, forAccountsBar} from './index.data';
+import {topIndustriesValues, topAccountsValues} from './index.data';
 
 import Chart from "react-apexcharts";
 
@@ -36,18 +36,23 @@ function PhoneComponent(props) {
     var totalTransactions = data? data.totalTranscations : null;
     var numberOfClients = data?data.numberOfClients: null;
     var transactionsByIndustry = data?data.transactionsByIndustry: null;
-    var topAccounts = data?data.topAcounts: null;
-
-    var graph1 = data?forIndustryBar(transactionsByIndustry) : null;
-    var graph2 = data?forAccountsBar(topAccounts) : null;
-
+    var topAccountsList = data?data.topAcounts: null;
     
+
+    var topMovers = data?topIndustriesValues(transactionsByIndustry):null;
+
+
+    var topAccounts = data?topAccountsValues(topAccountsList):null;
+
+
+    console.log("It is here");
+    console.log(topMovers);
   return (
 
     <div className="phone">
         <IPhoneTime/>
         <NavBar/>
-
+        
         
         
         <div className="mainContent">
@@ -59,7 +64,7 @@ function PhoneComponent(props) {
             {props.startPressed && 
                 !props.loadingComplete && 
                 data &&
-                <MainInformation totalTransactions = {totalTransactions} numberOfClients = {numberOfClients} graph1={graph1} graph2 = {graph2}/>
+                <MainInformation totalTransactions = {totalTransactions} numberOfClients = {numberOfClients} topMovers = {topMovers} topAccounts = {topAccounts}/>
             }
             {props.startPressed && 
                 !props.loadingComplete && 
